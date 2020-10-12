@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="container" align="center">
+<div class="row">
+    <div class="col">
+        <p class="form-header">What's good? Try uploading a GPX file here please:</p>
+        <form enctype = "multipart/form-data" method = "post">
+        <input type = "file" name = "file" />
+        <input type="submit" value="Upload" class="btn btn-success" />
+        </form>
+
+        <!--
+        <!doctype html>
+        <html>
+        <body>
+            <form method="post">
+                <button type="submit">Do it!</button>
+            </form>
+        </html>
+        -->
+    </div>
+</div>
+</div>
+{% endblock %}
