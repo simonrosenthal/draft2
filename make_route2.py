@@ -47,12 +47,16 @@ def find_turnpoints(head, tail, Points, Route):
     DOES NOT IDENTIFY TURN DIRECTION
     DOES NOT IDENTIFY TIME TILL NEXT TURN
     """
+
+    #compare street name of head with street name of tail, if they are not the same:
     if Points[head].get_roadname() != Points[tail].get_roadname():
+        #and if there are more than two points
         if head + 1 != tail:
+            #calculate the midpoint
             midpoint = (head + tail) // 2
+            #if the midpoint is the next index over,
             if (head + 1 == midpoint):
                 if Points[head].get_roadname() != Points[midpoint].get_roadname():
-                    #GOT IT UPDATED TO THIS POINT
                     Route.add_turnpoint(Points[midpoint])
                     find_turnpoints(midpoint, tail, Points, Route)
                 else:
@@ -63,8 +67,8 @@ def find_turnpoints(head, tail, Points, Route):
                     find_turnpoints(midpoint, tail, Points, Route)
                 else:
                     find_turnpoints(midpoint, tail, Points, Route)
-        #else:
-            #Route.add_turnpoint(Points[tail])
+        else:
+            Route.add_turnpoint(Points[tail])
 
 
 
@@ -72,18 +76,18 @@ if __name__ == '__main__':
     print("what's good ya'll let's see if we can get this to work")
     newRoute = Route()
     newRoute.create_route()
-    #print(newRoute.pntCount)
+    print(newRoute.pntCount)
 
-    """
+ #   """
     print(newRoute.pntCount)
     print(newRoute.points[0].lat)
     print(newRoute.points[0].lon)
     print(newRoute.points[0].index)
     newRoute.points[0].get_roadname()
     print("from within route shit here's the address: " + newRoute.points[0].roadname)
-    """
+ #   """
 
-    find_turnpoints(0, newRoute.pntCount-1, newRoute.points, newRoute)
+    #find_turnpoints(0, newRoute.pntCount-1, newRoute.points, newRoute)
 
 
 
