@@ -48,15 +48,58 @@ def find_turnpoints(head, tail, Points, Route):
     DOES NOT IDENTIFY TIME TILL NEXT TURN
     """
 
+
+    """
+    #def binarySearch(arr, l, r, x): 
+    arr : array to search
+    l : length of array 
+    r :  
+          
+    while l <= r: 
+  
+        mid = l + (r - l) // 2; 
+          
+        # Check if x is present at mid 
+        if arr[mid] == x: 
+            return mid 
+  
+        # If x is greater, ignore left half 
+        elif arr[mid] < x: 
+            l = mid + 1
+  
+        # If x is smaller, ignore right half 
+        else: 
+            r = mid - 1
+      
+    # If we reach here, then the element 
+    # was not present 
+    return -1
+    """
+
+
+
+ #   """
     #compare street name of head with street name of tail, if they are not the same:
+    print("at point: ", head, " ", Points[head].get_roadname(), " comparing to street: ", \
+          " and: ", tail, " ", Points[tail].get_roadname())
+
+    if Points[head].get_roadname() == Points[tail].get_roadname():
+        if tail-head > 0:
+            midpoint = (head + tail) // 2
+            if Points[head].get_roadname() != Points[midpoint].get_roadname():
+                find_turnpoints(midpoint, head, Points, Route)
+            if Points[tail].get_roadname() != Points[midpoint].get_roadname():
+                find_turnpoints(midpoint, tail, Points, Route)
+
     if Points[head].get_roadname() != Points[tail].get_roadname():
         #and if there are more than two points
         if head + 1 != tail:
-            #calculate the midpoint
             midpoint = (head + tail) // 2
-            #if the midpoint is the next index over,
+            #if there is just one point between head and tail
             if (head + 1 == midpoint):
                 if Points[head].get_roadname() != Points[midpoint].get_roadname():
+                    print("at point: ", head, " ", Points[head].get_roadname(), " make a turn onto street: ", \
+                          " and: ", midpoint, " ", Points[midpoint].get_roadname())
                     Route.add_turnpoint(Points[midpoint])
                     find_turnpoints(midpoint, tail, Points, Route)
                 else:
@@ -68,9 +111,11 @@ def find_turnpoints(head, tail, Points, Route):
                 else:
                     find_turnpoints(midpoint, tail, Points, Route)
         else:
+            print("at point: ", head, " ", Points[head].get_roadname(), " make a turn onto street: ", \
+                  " and: ", tail, " ", Points[tail].get_roadname())
             Route.add_turnpoint(Points[tail])
 
-
+  #  """
 
 if __name__ == '__main__':
     print("what's good ya'll let's see if we can get this to work")
@@ -86,10 +131,10 @@ if __name__ == '__main__':
     newRoute.points[0].get_roadname()
     print("from within route shit here's the address: " + newRoute.points[0].roadname)
     """
-
+ #   """
     find_turnpoints(0, newRoute.pntCount-1, newRoute.points, newRoute)
-    for turn in Route.turns:
+    for turn in newRoute.turns:
         print(Route.points[turn.pointIndex].get_roadname)
-
+ #   """
 
 

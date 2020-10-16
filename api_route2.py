@@ -5,9 +5,9 @@ import time
 i = 0
 
 def getStreetNameFromApi(point):
-        print (point.lat, point.lon)
+        #print (point.lat, point.lon)
         parameters = {
-            "key": "cKkKyWIc0aAFiaqmlSopLLuKJuXuj4di",
+            "key": "PJCRyZIEUVjlIxcfPPyylEKDVYlVPQcF",
             "location": str(point.lat) + "," + str(point.lon),
             "includeRoadMetadata" : "true",
             "includeNearestIntersection" : "true"
@@ -15,8 +15,21 @@ def getStreetNameFromApi(point):
         response = requests.get(
             "http://www.mapquestapi.com/geocoding/v1/reverse",
             params=parameters)
-        addy = response.json()['results'][0]['locations'][0]['street']
-        print(addy)
+        try:
+            addy = str(response.json()['results'][0]['locations'][0]['street'])
+
+            #we need to strip the numbers from the street name
+            try:
+                word = addy.split()[0]
+                #print("word is: ", word, " ", all(i.isdigit() for i in word), " ", type(addy))
+                if(all(i.isdigit() for i in word)):
+                    addy = addy.split(' ', 1)[1]
+                    #print("new address: " ,addy)
+            except:
+                print("couldnt be parsed")
+        except:
+            print(response)
+
         return addy
 
         """

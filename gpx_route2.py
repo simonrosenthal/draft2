@@ -17,13 +17,16 @@ class Route():
 
     def add_turnpoint(self, point):
         newTurn = Turn(point.index)
-        print("at point: ", point.index, " you are gonna want to make a turn")
+       #print("at point: ", point.index," ",point.get_roadname()," make a turn between street: ",  \
+       #       " and: ", point.index-1," ", self.points[point.index-1].get_roadname())
         self.turns.append(newTurn)
         self.turnCount += 1
 
     def create_route(self):
         filename = open("uploads/09_27_20.gpx", 'r')
         gpx = gpxpy.parse(filename)
+        #Added this line to help clean up data?
+        gpx.simplify(1)
 
         for track in gpx.tracks:
             for segment in track.segments:
