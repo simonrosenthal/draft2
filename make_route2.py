@@ -39,6 +39,7 @@ def ab_distance(a_lat, a_lng, b_lat, b_lng):
 
 
 
+
 def find_turnpoints(head, tail, Points, Route):
     """
     DOES FIND WHEN ROADS CHANGE WITHOUT USING BINARY SEARCH
@@ -80,16 +81,8 @@ def find_turnpoints(head, tail, Points, Route):
 
  #   """
     #compare street name of head with street name of tail, if they are not the same:
-    print("at point: ", head, " ", Points[head].get_roadname(), " comparing to street: ", \
-          " and: ", tail, " ", Points[tail].get_roadname())
-
-    if Points[head].get_roadname() == Points[tail].get_roadname():
-        if tail-head > 0:
-            midpoint = (head + tail) // 2
-            if Points[head].get_roadname() != Points[midpoint].get_roadname():
-                find_turnpoints(midpoint, head, Points, Route)
-            if Points[tail].get_roadname() != Points[midpoint].get_roadname():
-                find_turnpoints(midpoint, tail, Points, Route)
+    #print("BEGNINNING at point: ", head, " ", Points[head].get_roadname(), " comparing to street: ", \
+          #" and: ", tail, " ", Points[tail].get_roadname())
 
     if Points[head].get_roadname() != Points[tail].get_roadname():
         #and if there are more than two points
@@ -99,7 +92,7 @@ def find_turnpoints(head, tail, Points, Route):
             if (head + 1 == midpoint):
                 if Points[head].get_roadname() != Points[midpoint].get_roadname():
                     print("at point: ", head, " ", Points[head].get_roadname(), " make a turn onto street: ", \
-                          " and: ", midpoint, " ", Points[midpoint].get_roadname())
+                         " and: ", midpoint, " ", Points[midpoint].get_roadname())
                     Route.add_turnpoint(Points[midpoint])
                     find_turnpoints(midpoint, tail, Points, Route)
                 else:
@@ -112,16 +105,27 @@ def find_turnpoints(head, tail, Points, Route):
                     find_turnpoints(midpoint, tail, Points, Route)
         else:
             print("at point: ", head, " ", Points[head].get_roadname(), " make a turn onto street: ", \
-                  " and: ", tail, " ", Points[tail].get_roadname())
+                 " and: ", tail, " ", Points[tail].get_roadname())
             Route.add_turnpoint(Points[tail])
 
+    #check if a whole segment from head to tail is on the same road
+    #do this by checking if midpoint has different name?
+    elif Points[head].get_roadname() == Points[tail].get_roadname():
+        if head + 1 != tail:
+            midpoint = (head+tail)//2
+            if Points[head].get_roadname() != Points[midpoint].get_roadname():
+                find_turnpoints(head, midpoint, Points, Route)
+            if Points[midpoint].get_roadname() != Points[tail].get_roadname():
+                find_turnpoints(midpoint, tail, Points, Route)
   #  """
-
+def sortSecond(point):
+    return point.index
 if __name__ == '__main__':
-    print("what's good ya'll let's see if we can get this to work")
+    print("=================== what's good ya'll let's see if we can get this to work =================== \n \n")
     newRoute = Route()
     newRoute.create_route()
     print(newRoute.pntCount)
+    print("=================== GPX DATA EXTRACTED STARTING THE TURNPOINT SEARCH =================== \n \n")
 
     """
     print(newRoute.pntCount)
@@ -132,9 +136,15 @@ if __name__ == '__main__':
     print("from within route shit here's the address: " + newRoute.points[0].roadname)
     """
  #   """
+
     find_turnpoints(0, newRoute.pntCount-1, newRoute.points, newRoute)
+    print("=================== TURN POINTS GOTTEN, STARTING TO ORGANIZE ARRAY OF TURNS ==================== \n \n")
+    #sort the turns array in sequential order
+    newRoute.turns.sort(key = lambda x: newRoute.points[x.pointIndex].index, reverse = False)
+
+    print("==================== TURNS ORGANIZED NOW DISPLAYING ============================= \n \n")
     for turn in newRoute.turns:
-        print(Route.points[turn.pointIndex].get_roadname)
+        print("We need to turn at: " , newRoute.points[turn.pointIndex].get_roadname(), " with index: ", newRoute.points[turn.pointIndex].index)
  #   """
 
 

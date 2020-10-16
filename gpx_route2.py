@@ -26,7 +26,7 @@ class Route():
         filename = open("uploads/09_27_20.gpx", 'r')
         gpx = gpxpy.parse(filename)
         #Added this line to help clean up data?
-        gpx.simplify(1)
+        gpx.simplify(0.5)
 
         for track in gpx.tracks:
             for segment in track.segments:
