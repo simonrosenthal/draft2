@@ -1,6 +1,8 @@
 import requests
+import time
 
 #http://www.mapquestapi.com/geocoding/v1/reverse?key=KEY&location=30.333472,-81.470448&includeRoadMetadata=true&includeNearestIntersection=true
+i = 0
 
 def getStreetNameFromApi(point):
         print (point.lat, point.lon)
@@ -20,18 +22,19 @@ def getStreetNameFromApi(point):
         """
         FOR OLD INTERFACE
         
-        parameters = {
-            "apiKey": "eb6a7ee7e8ad43f69ea61d99c1b28daa",
-            "version": "4.10",
-            "lat": point.lat,
-            "lon": point.lon,
-            "format": "json"
-        }
-
-        response = requests.get(
-            "https://geoservices.tamu.edu/Services/ReverseGeocoding/Webservice/v04_01/HTTP/default.aspx",
-            params=parameters)
-        print(response.json())
-        addy = response.json()['StreetAddresses'][0]['StreetAddress']
-        return addy
+        def getStreetNameFromApi(point):#, route):
+                # print (point.lat, point.lon)
+                parameters = {
+                    "apiKey": "737eceecff3e4e79bdcb66de0e4173e3",
+                    "version": "4.10",
+                    "lat": point.lat,
+                    "lon": point.lon,
+                    "format": "json"
+                }
+        
+                response = requests.get(
+                    "https://geoservices.tamu.edu/Services/ReverseGeocoding/Webservice/v04_01/HTTP/default.aspx",
+                    params=parameters)
+                addy = response.json()['StreetAddresses'][0]['StreetAddress']
+                return addy
         """

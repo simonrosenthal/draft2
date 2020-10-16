@@ -78,16 +78,18 @@ if __name__ == '__main__':
     newRoute.create_route()
     print(newRoute.pntCount)
 
- #   """
+    """
     print(newRoute.pntCount)
     print(newRoute.points[0].lat)
     print(newRoute.points[0].lon)
     print(newRoute.points[0].index)
     newRoute.points[0].get_roadname()
     print("from within route shit here's the address: " + newRoute.points[0].roadname)
- #   """
+    """
 
-    #find_turnpoints(0, newRoute.pntCount-1, newRoute.points, newRoute)
+    find_turnpoints(0, newRoute.pntCount-1, newRoute.points, newRoute)
+    for turn in Route.turns:
+        print(Route.points[turn.pointIndex].get_roadname)
 
 
 
