@@ -7,6 +7,7 @@ The arithmetic for making the route
 """
 import math
 from gpx_route2 import Route
+from find_turn import find_turn
 
 earth_radius = 6370.856
 math_2pi = math.pi * 2
@@ -48,37 +49,6 @@ def find_turnpoints(head, tail, Points, Route):
     DOES NOT IDENTIFY TURN DIRECTION
     DOES NOT IDENTIFY TIME TILL NEXT TURN
     """
-
-
-    """
-    #def binarySearch(arr, l, r, x): 
-    arr : array to search
-    l : length of array 
-    r :  
-          
-    while l <= r: 
-  
-        mid = l + (r - l) // 2; 
-          
-        # Check if x is present at mid 
-        if arr[mid] == x: 
-            return mid 
-  
-        # If x is greater, ignore left half 
-        elif arr[mid] < x: 
-            l = mid + 1
-  
-        # If x is smaller, ignore right half 
-        else: 
-            r = mid - 1
-      
-    # If we reach here, then the element 
-    # was not present 
-    return -1
-    """
-
-
-
  #   """
     #compare street name of head with street name of tail, if they are not the same:
     #print("BEGNINNING at point: ", head, " ", Points[head].get_roadname(), " comparing to street: ", \
@@ -91,8 +61,8 @@ def find_turnpoints(head, tail, Points, Route):
             #if there is just one point between head and tail
             if (head + 1 == midpoint):
                 if Points[head].get_roadname() != Points[midpoint].get_roadname():
-                    print("at point: ", head, " ", Points[head].get_roadname(), " make a turn onto street: ", \
-                         " and: ", midpoint, " ", Points[midpoint].get_roadname())
+                    #print("at point: ", head, " ", Points[head].get_roadname(), " make a turn onto street: ", \
+                    #     " and: ", midpoint, " ", Points[midpoint].get_roadname())
                     Route.add_turnpoint(Points[midpoint])
                     find_turnpoints(midpoint, tail, Points, Route)
                 else:
@@ -104,8 +74,8 @@ def find_turnpoints(head, tail, Points, Route):
                 else:
                     find_turnpoints(midpoint, tail, Points, Route)
         else:
-            print("at point: ", head, " ", Points[head].get_roadname(), " make a turn onto street: ", \
-                 " and: ", tail, " ", Points[tail].get_roadname())
+            #print("at point: ", head, " ", Points[head].get_roadname(), " make a turn onto street: ", \
+            #     " and: ", tail, " ", Points[tail].get_roadname())
             Route.add_turnpoint(Points[tail])
 
     #check if a whole segment from head to tail is on the same road
@@ -123,7 +93,7 @@ def sortSecond(point):
 if __name__ == '__main__':
     print("=================== what's good ya'll let's see if we can get this to work =================== \n \n")
     newRoute = Route()
-    newRoute.create_route()
+    newRoute.create_route("uploads/09_27_20.gpx")
     print(newRoute.pntCount)
     print("=================== GPX DATA EXTRACTED STARTING THE TURNPOINT SEARCH =================== \n \n")
 
@@ -143,8 +113,17 @@ if __name__ == '__main__':
     newRoute.turns.sort(key = lambda x: newRoute.points[x.pointIndex].index, reverse = False)
 
     print("==================== TURNS ORGANIZED NOW DISPLAYING ============================= \n \n")
+    totalDistance = 0
     for turn in newRoute.turns:
-        print("We need to turn at: " , newRoute.points[turn.pointIndex].get_roadname(), " with index: ", newRoute.points[turn.pointIndex].index)
+        if(newRoute.turns.index(turn) != 0):
+            print(newRoute.turns.index(turn)-1)
+            previousTurnPoint = newRoute.points[newRoute.turns[newRoute.turns.index(turn)-1].pointIndex]
+            currentTurnPoint = newRoute.points[turn.pointIndex]
+            dist = ab_distance(previousTurnPoint.get_latlon()[0], previousTurnPoint.get_latlon()[1], \
+                               currentTurnPoint.get_latlon()[0], currentTurnPoint.get_latlon()[1])
+            totalDistance += dist
+        print("We need to turn at: " , newRoute.points[turn.pointIndex].get_roadname(), " with index: ", newRoute.points[turn.pointIndex].index, \
+              "the two points have a distance of: ", totalDistance, " kilometers")
  #   """
 
 

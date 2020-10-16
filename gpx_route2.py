@@ -22,11 +22,11 @@ class Route():
         self.turns.append(newTurn)
         self.turnCount += 1
 
-    def create_route(self):
-        filename = open("uploads/09_27_20.gpx", 'r')
+    def create_route(self, fileRoute):
+        filename = open(fileRoute, 'r')
         gpx = gpxpy.parse(filename)
         #Added this line to help clean up data?
-        gpx.simplify(0.5)
+        gpx.simplify(0.4)
 
         for track in gpx.tracks:
             for segment in track.segments:
@@ -52,10 +52,14 @@ class Point():
             self.set_roadname(getStreetNameFromApi(self))
         return self.roadname
 
+    def get_latlon(self):
+        return [float(self.lat), float(self.lon)]
 class Turn():
 
     def __init__(self, index):
         self.pointIndex = index
         self.direction = ""
+        self.turnName = ""
+        self.distance = None
 
 

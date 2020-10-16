@@ -1,0 +1,61 @@
+We need to turn at:  NW Highland Dr  with index:  47
+We need to turn at:  NW Circle Blvd  with index:  51
+We need to turn at:  NW Highland Dr  with index:  55
+We need to turn at:  NW Crescent Valley Dr  with index:  291
+We need to turn at:  NW Lewisburg Ave  with index:  517
+We need to turn at:  NW Sulphur Springs Rd  with index:  532
+We need to turn at:  Soap Creek Rd  with index:  975
+We need to turn at:  Tampico Rd  with index:  1498
+We need to turn at:  Berry Creek Rd  with index:  1944
+We need to turn at:  Airlie Rd  with index:  2060
+We need to turn at:  S Pacific Hwy W  with index:  2443
+We need to turn at:  Helmick Rd  with index:  2468
+We need to turn at:  S Pacific Hwy W  with index:  2471
+We need to turn at:  Helmick Rd  with index:  2474
+We need to turn at:  Helmick Rd  with index:  2476
+We need to turn at:  Helmick Rd  with index:  2477
+We need to turn at:  Warren St S  with index:  3264
+We need to turn at:  Warren St N  with index:  3354
+We need to turn at:  Main St W  with index:  3362
+We need to turn at:  Monmouth Ave N  with index:  3376
+We need to turn at:  Riddell Rd  with index:  3469
+We need to turn at:  Hoffman Rd  with index:  3536
+We need to turn at:  Polk St  with index:  3743
+We need to turn at:  Marsh St  with index:  3772
+We need to turn at:  Polk St  with index:  3774
+We need to turn at:  N Main St  with index:  3776
+We need to turn at:  B St  with index:  3829
+We need to turn at:  S Main St  with index:  3831
+We need to turn at:  C St  with index:  3840
+We need to turn at:  S Main St  with index:  3857
+We need to turn at:  S River Dr  with index:  3909
+We need to turn at:  River Rd S  with index:  3931
+We need to turn at:  Riverside Dr S  with index:  3963
+We need to turn at:  Riverside Rd S  with index:  4480
+We need to turn at:  Sidney Rd S  with index:  4562
+We need to turn at:  Buena Vista Rd S  with index:  4764
+We need to turn at:  Buena Vista - Willamette Ferry  with index:  5164
+We need to turn at:  Willamette Ferry St  with index:  5197
+We need to turn at:  Riverview St  with index:  5240
+We need to turn at:  Main St  with index:  5267
+We need to turn at:  Meridian St  with index:  5284
+We need to turn at:  Buena Vista Rd  with index:  5299
+We need to turn at:  Buena Vista Rd NW  with index:  5657
+We need to turn at:  NW Springhill Dr  with index:  5701
+We need to turn at:  NW Independence Hwy  with index:  5771
+We need to turn at:  NE Pettibone Dr  with index:  6225
+We need to turn at:  NE Kenny Dr  with index:  6331
+We need to turn at:  NE Pettibone Dr  with index:  6333
+We need to turn at:  NE Logsdon Rd  with index:  6356
+We need to turn at:  NE Pettibone Dr  with index:  6360
+We need to turn at:  NE Granger Ave  with index:  6526
+We need to turn at:  NE Elliott Cir  with index:  6581
+We need to turn at:  NE Granger Ave  with index:  6623
+We need to turn at:  Pacific Hwy W  with index:  6637
+We need to turn at:  NE Conifer Blvd  with index:  6827
+We need to turn at:  NW 9th St  with index:  6837
+We need to turn at:  NW Circle Blvd  with index:  6916
+We need to turn at:  NW Highland Dr  with index:  6958
+We need to turn at:  NW Spruce Ave  with index:  6972
+
+Process finished with exit code 0
