@@ -126,5 +126,5 @@ if __name__ == '__main__':
             find_turn(newRoute.points[turn.pointIndex-1].lon, newRoute.points[turn.pointIndex-1].lat,
                 newRoute.points[turn.pointIndex].lon, newRoute.points[turn.pointIndex].lat,
                 newRoute.points[turn.pointIndex+1].lon, newRoute.points[turn.pointIndex+1].lat) , 
-            " with index: ", newRoute.points[turn.pointIndex].index, \
+            " with index: ", newRoute.points[turn.pointIndex].index,
               "the two points have a distance of: ", totalDistance, " kilometers")
