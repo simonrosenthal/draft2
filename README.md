@@ -8,12 +8,19 @@ This repository holds software for an application that converts a trail of gpx p
 - Easy to use front end GUI powered by flask 
 
 ### Errors, things to be Worked on 
+- Does not handle u-turns well
+- has minor road errors at certain intersections
+- slow runtime 
 
 ## User Manual 
 
 ### Basic Requirements 
+- Computer running either Linux or Windows  (not tested on Mac) 
+- Internet connection for calling the API 
 
-### Starting the Application 
+### Starting the Application
+ 
+##### Entering Information 
 
 ### Using the Application 
 
