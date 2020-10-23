@@ -15,18 +15,16 @@ class Route():
         point = Point(lat, lon, self.pntCount)
         self.points.append(point)
         self.pntCount += 1
-        print("last filtered is: " + str(self.lastFiltered))
-        print("adding " + self.points[self.pntCount-1].get_roadname() + " at " + str(self.points[self.pntCount-1].index))
-        if self.lastFiltered > 0 and self.points[self.pntCount-1].roadname != self.points[self.pntCount - 2].roadname:
-            print("filtering because " + self.points[self.pntCount-1].roadname + " != " + self.points[self.pntCount - 2].roadname)
+        road = self.points[self.pntCount-1].get_roadname()
+        prevRoad = self.points[self.pntCount - 2].get_roadname()
+        print("current is " + road)
+        if self.lastFiltered > 0 and road != prevRoad:
             self.filter_points()
-        elif self.points[self.pntCount-1].roadname != self.points[self.pntCount - 2].roadname:
+        elif road != prevRoad:
             self.lastFiltered = self.pntCount - 2
 
     def add_turnpoint(self, point):
         newTurn = Turn(point.index)
-       #print("at point: ", point.index," ",point.get_roadname()," make a turn between street: ",  \
-       #       " and: ", point.index-1," ", self.points[point.index-1].get_roadname())
         self.turns.append(newTurn)
         self.turnCount += 1
 
@@ -45,24 +43,16 @@ class Route():
 
     def filter_points(self):
         current = self.points[self.lastFiltered + 1].roadname
-        print (current + " at " + str(self.points[self.lastFiltered + 1].index) + " with point count " + str(self.pntCount))
         indices =  self.pntCount - self.lastFiltered - 2
         start = self.points[self.lastFiltered]
         end = self.points[self.lastFiltered + indices + 1]
-        print("filtering begins at " + start.roadname + " and ends at " + end.roadname)
-        print("# of indices for " + current +  " is " + str(indices))
         if start.roadname == end.roadname:
-            print(start.roadname + " == " + end.roadname)
             del self.points[(start.index + 1):end.index]
             self.pntCount = self.pntCount-indices
-            print("deleting the points " + str(start.index) + " through " + str(end.index) + " on " +  current)
-            print("last filtered is " + str(self.lastFiltered))
-            self.points[-1].index = start.index + 1
-            print("last point is: " + self.points[-1].roadname + " at " + str(self.points[-1].index))
-            print ("point count " + str(self.pntCount))        
+            self.points[-1].index = start.index + 1     
         else:
             self.lastFiltered = self.lastFiltered + indices 
-            
+
 
 class Point():
 
@@ -90,3 +80,5 @@ class Turn():
         self.direction = ""
         self.turnName = ""
         self.distance = None
+
+
