@@ -17,13 +17,14 @@ This repository holds software for an application that converts a trail of gpx p
 ### Basic Requirements 
 - Computer running either Linux or Windows  (not tested on Mac) 
 - Internet connection for calling the API
-- Python 3 
+- Python 3
+- Knowlege of how to build python files on the command line or in a text editor
 
 ### Starting the Application
 If your computer doesn't have Python 3 currently installed, go to https://www.python.org/downloads/ and install the most recent version for your operating system.
 To get started,
 1. Download this repo
-2. Run app.py
+2. Build then run app.py
 3. Open your web browser, type 127.0.0.1:5000 in the address bar, and then hit enter
  
 ### Entering Information
