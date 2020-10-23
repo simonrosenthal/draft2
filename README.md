@@ -26,7 +26,7 @@ To get started,
 2. Run app.py
 3. Open your web browser, type 127.0.0.1:5000 in the address bar, and then hit enter
  
-##### Entering Information
+### Entering Information
 1. Once you're on the graphic interface, if you have a MapQuest API key, enter it into the textbox. If you leave this textbox empty and it doesn't work, click the link to be taken to the website to make a free account which will include a key.
 2. Choose your .gpx file from the choose file button, then hit upload.
 
